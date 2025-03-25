@@ -2,3 +2,4 @@ requests
 markdown
 rich
 markdown2
+pygments
