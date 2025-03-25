@@ -1,121 +1,124 @@
 # MDView - Advanced Markdown Viewer
 
-MDView is a powerful and feature-rich command-line tool designed to render Markdown files with advanced formatting options directly in your terminal. Built with Python and leveraging the `rich` library, MDView provides a robust solution for viewing Markdown files with support for headers, bold, italic, underline, strikethrough, code blocks, blockquotes, lists, tables, and more. It is designed for developers, technical writers, and anyone who needs to preview Markdown content in a terminal environment with precision and style.
+MDView is a powerful and feature-rich command-line tool designed to render Markdown files with advanced formatting options directly in your terminal. Built with Python and leveraging the `rich` and `markdown2` libraries, MDView provides a robust solution for viewing Markdown files with support for headers, bold, italic, underline, strikethrough, code blocks, blockquotes, lists, tables, and more. It is designed for developers, technical writers, and anyone who needs to preview Markdown content in a terminal environment with precision and style.
 
 ## Installation
 
-To install MDView, simply run the following commands in your terminal:
+To install MDView, follow these steps:
 
+1. Download the script and requirements:
 ```bash
 wget https://raw.githubusercontent.com/linuxfanboy4/mdview/refs/heads/main/mdview.py
+wget https://raw.githubusercontent.com/linuxfanboy4/mdview/refs/heads/main/requirements.txt
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Make the script executable:
+```bash
 chmod +x mdview.py
 ```
 
-This will download the script and make it executable. You can now use MDView to render Markdown files directly in your terminal.
+Alternatively, you can use the Docker container:
+```bash
+docker run -it ghcr.io/linuxfanboy4/mdview
+```
 
 ## Features
 
-MDView supports a wide range of Markdown features, including:
+MDView supports a comprehensive range of Markdown features with ANSI styling:
 
-- **Headers**: Renders `#` to `######` with bold formatting.
-- **Bold and Italic**: Supports `**bold**`, `*italic*`, and `***bold italic***` text.
-- **Underline and Strikethrough**: Renders `__underline__` and `~~strikethrough~~`.
-- **Code Blocks**: Renders inline code (`` `code` ``) and multi-line code blocks (``` ```code``` ```) with monospace formatting.
-- **Blockquotes**: Formats `> blockquotes` with italic styling.
-- **Lists**: Supports both unordered (`-`, `*`, `+`) and ordered (`1.`, `2.`, etc.) lists.
-- **Tables**: Renders Markdown tables with proper alignment and borders.
-- **Advanced Formatting**: Combines multiple styles, such as `**__bold underline__**` and `***__bold italic underline__***`.
-- **Custom Fonts**: Utilizes terminal-compatible fonts for consistent rendering.
+- **Headers**: Renders `#` to `######` with bold formatting
+- **Text Styles**:
+  - `**bold**`, `*italic*`, `***bold italic***`
+  - `__underline__`, `~~strikethrough~~`
+  - Combined styles like `**__bold underline__**`
+- **Code Elements**:
+  - Inline code (`` `code` ``)
+  - Multi-line code blocks (``` ```code``` ```)
+- **Blockquotes**: `>` with italic styling
+- **Lists**:
+  - Unordered (`-`, `*`, `+`)
+  - Ordered (`1.`, `2.`, etc.)
+- **Tables**: Basic table rendering
+- **Advanced Formatting**:
+  - Nested styles like `***__bold italic underline__***`
+  - Custom ANSI escape codes for precise styling
 
 ## Usage
 
-To view a Markdown file, use the following command:
-
+Basic usage:
 ```bash
 ./mdview.py <filename>.md
 ```
 
-Replace `<filename>.md` with the path to your Markdown file.
+Additional options:
+```bash
+./mdview.py <filename>.md [word_limit] [--html]
+```
+
+- `<filename>.md`: Markdown file or GitHub raw URL
+- `word_limit`: Optional limit of words to display
+- `--html`: Output as HTML instead of terminal rendering
+
+Examples:
+```bash
+# View local file
+./mdview.py README.md
+
+# View with word limit
+./mdview.py README.md 100
+
+# Output as HTML
+./mdview.py README.md --html
+
+# View from GitHub raw URL
+./mdview.py https://raw.githubusercontent.com/user/repo/main/README.md
+```
+
+## Technical Details
+
+MDView uses:
+- Python's `re` module for advanced pattern matching
+- `rich` library for beautiful terminal output
+- `markdown2` for HTML conversion
+- Custom ANSI escape code handling for precise styling
+
+The script includes comprehensive regular expressions to handle:
+- Nested formatting combinations
+- Complex Markdown structures
+- Edge cases in Markdown parsing
 
 ## Examples
-
-Below are examples of how MDView renders various Markdown elements:
-
-### Headers
-```markdown
-# Header 1
-## Header 2
-### Header 3
-#### Header 4
-##### Header 5
-###### Header 6
-```
-
-### Bold, Italic, and Underline
-```markdown
-**Bold Text**
-*Italic Text*
-***Bold Italic Text***
-__Underline Text__
-~~Strikethrough Text~~
-```
-
-### Code Blocks
-```markdown
-Inline `code` example.
-
-```
-Multi-line
-code block
-```
-```
-
-### Blockquotes
-```markdown
-> This is a blockquote.
-> It supports multi-line content.
-```
-
-### Lists
-```markdown
-- Unordered List Item 1
-- Unordered List Item 2
-  - Nested Item
-
-1. Ordered List Item 1
-2. Ordered List Item 2
-   1. Nested Item
-```
-
-### Tables
-```markdown
-| Column 1       | Column 2       | Column 3       |
-|----------------|----------------|----------------|
-| Row 1, Col 1   | Row 1, Col 2   | Row 1, Col 3   |
-| Row 2, Col 1   | Row 2, Col 2   | Row 2, Col 3   |
-```
 
 ### Advanced Formatting
 ```markdown
 **__Bold Underline__**
 ***__Bold Italic Underline__***
+`inline code` with **bold** and *italic*
 ```
 
-## Customization
-
-MDView uses ANSI escape codes to apply styles, ensuring compatibility with most modern terminals. You can extend the `ANSI_CODES` dictionary in the script to add custom styles or modify existing ones.
+### GitHub Integration
+```bash
+./mdview.py https://raw.githubusercontent.com/linuxfanboy4/mdview/main/README.md
+```
 
 ## Dependencies
 
-MDView relies on the `rich` library for rendering Markdown. Ensure you have it installed by running:
+MDView requires:
+- Python 3.x
+- `rich` library
+- `markdown2` library
+- `requests` (for GitHub raw URLs)
 
-```bash
-pip install rich
-```
+These are automatically installed with the `requirements.txt` file.
 
 ## Contributing
 
-Contributions are welcome! If you have suggestions, bug reports, or feature requests, please open an issue or submit a pull request on the [GitHub repository](https://github.com/linuxfanboy4/mdview).
+Contributions are welcome! Please open an issue or submit a pull request on the [GitHub repository](https://github.com/linuxfanboy4/mdview).
 
 ## License
 
