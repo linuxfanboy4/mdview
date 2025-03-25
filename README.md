@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://github.com/linuxfanboy4/mdview/blob/78d8b2d1d42f36a5ada0837e5db8c80ad9b67ed1/Black%20White%20Minimalist%20Simple%20Logo_20250325_091947_0000.png?raw=true" alt="Centered Image">
+</p>
+
 # MDView - Advanced Markdown Viewer
 
 MDView is a powerful and feature-rich command-line tool designed to render Markdown files with advanced formatting options directly in your terminal. Built with Python and leveraging the `rich` and `markdown2` libraries, MDView provides a robust solution for viewing Markdown files with support for headers, bold, italic, underline, strikethrough, code blocks, blockquotes, lists, tables, and more. It is designed for developers, technical writers, and anyone who needs to preview Markdown content in a terminal environment with precision and style.
