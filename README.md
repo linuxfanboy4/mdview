@@ -43,7 +43,7 @@ MDView supports a comprehensive range of Markdown features with ANSI styling:
 - **Lists**:
   - Unordered (`-`, `*`, `+`)
   - Ordered (`1.`, `2.`, etc.)
-- **Tables**: Basic table rendering
+- **Tables**: Advanced table rendering
 - **Advanced Formatting**:
   - Nested styles like `***__bold italic underline__***`
   - Custom ANSI escape codes for precise styling
@@ -85,6 +85,7 @@ MDView uses:
 - Python's `re` module for advanced pattern matching
 - `rich` library for beautiful terminal output
 - `markdown2` for HTML conversion
+- `pygments` for syntax highlights in code blocks
 - Custom ANSI escape code handling for precise styling
 
 The script includes comprehensive regular expressions to handle:
@@ -113,6 +114,7 @@ MDView requires:
 - `rich` library
 - `markdown2` library
 - `requests` (for GitHub raw URLs)
+- `pygments` library
 
 These are automatically installed with the `requirements.txt` file.
 
