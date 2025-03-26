@@ -27,6 +27,11 @@ Alternatively, you can use the Docker container:
 docker run -it ghcr.io/linuxfanboy4/mdview
 ```
 
+Optionally, install using `pip`:
+```bash
+pip install git-https://github.com/linuxfanboy4/mdview.git
+```
+
 ## Features
 
 MDView supports a comprehensive range of Markdown features with ANSI styling:
