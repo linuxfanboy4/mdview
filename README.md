@@ -1,6 +1,6 @@
 # MDView - Advanced Markdown Viewer
 
-MDView is a powerful and feature-rich command-line tool designed to render Markdown files with advanced formatting options directly in your terminal. Built with Python and leveraging the `rich` and `markdown2` libraries, MDView provides a robust solution for viewing Markdown files with support for headers, bold, italic, underline, strikethrough, code blocks, blockquotes, lists, tables, and more. It is designed for developers, technical writers, and anyone who needs to preview Markdown content in a terminal environment with precision and style.
+MDView is a powerful and feature-rich command-line tool designed to render Markdown files with advanced formatting options directly in your terminal. Built with Python and leveraging the `rich`, `markdown2`, and `pygments` libraries, MDView provides a robust solution for viewing Markdown files with support for headers, bold, italic, underline, strikethrough, code blocks, blockquotes, lists, tables, and more. It is designed for developers, technical writers, and anyone who needs to preview Markdown content in a terminal environment with precision and style.
 
 ## Installation
 
@@ -36,22 +36,27 @@ pip install git+https://github.com/linuxfanboy4/mdview.git
 
 MDView supports a comprehensive range of Markdown features with ANSI styling:
 
-- **Headers**: Renders `#` to `######` with bold formatting
+- **Headers**: Renders `#` to `######` with bold and underline formatting
 - **Text Styles**:
   - `**bold**`, `*italic*`, `***bold italic***`
   - `__underline__`, `~~strikethrough~~`
   - Combined styles like `**__bold underline__**`
 - **Code Elements**:
-  - Inline code (`` `code` ``)
+  - Inline code (`` `code` ``) with inverse styling
   - Multi-line code blocks (``` ```code``` ```) with syntax highlighting based on the language (leveraging Pygments)
-- **Blockquotes**: `>` with italic styling
+- **Blockquotes**: `>` with italic and blue styling
 - **Lists**:
-  - Unordered (`-`, `*`, `+`)
-  - Ordered (`1.`, `2.`, etc.)
-- **Tables**: Advanced table rendering
+  - Unordered (`-`, `*`, `+`) with green text
+  - Ordered (`1.`, `2.`, etc.) with yellow text
+- **Tables**: Advanced table rendering with bold underline headers
+- **Task Lists**: Support for GitHub-style task lists
 - **Advanced Formatting**:
   - Nested styles like `***__bold italic underline__***`
-  - Custom ANSI escape codes for precise styling
+  - Custom ANSI escape codes for precise styling including:
+    - Bold, italic, underline, strikethrough
+    - Double underline, inverse, hidden
+    - Fraktur, blink, faint
+    - Color support (yellow, blue, green)
 
 ## Usage
 
@@ -91,12 +96,18 @@ MDView uses:
 - `rich` library for beautiful terminal output
 - `markdown2` for HTML conversion
 - `pygments` for syntax highlights in code blocks based on the language
-- Custom ANSI escape code handling for precise styling
+- Custom ANSI escape code handling for precise styling with support for:
+  - 21 different text styles and combinations
+  - 3 text colors (yellow, blue, green)
+  - Complex nested formatting combinations
 
 The script includes comprehensive regular expressions to handle:
 - Nested formatting combinations
 - Complex Markdown structures
 - Edge cases in Markdown parsing
+- GitHub raw URL fetching
+- Word limit constraints
+- HTML output conversion
 
 ## Examples
 
@@ -105,6 +116,9 @@ The script includes comprehensive regular expressions to handle:
 **__Bold Underline__**
 ***__Bold Italic Underline__***
 `inline code` with **bold** and *italic*
+> Blockquote with italic blue styling
+- Green unordered list
+1. Yellow ordered list
 ```
 
 ### GitHub Integration
