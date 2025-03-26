@@ -38,7 +38,7 @@ MDView supports a comprehensive range of Markdown features with ANSI styling:
   - Combined styles like `**__bold underline__**`
 - **Code Elements**:
   - Inline code (`` `code` ``)
-  - Multi-line code blocks (``` ```code``` ```)
+  - Multi-line code blocks (``` ```code``` ```) with syntax highlighting based on the language (leveraging Pygments)
 - **Blockquotes**: `>` with italic styling
 - **Lists**:
   - Unordered (`-`, `*`, `+`)
@@ -85,7 +85,7 @@ MDView uses:
 - Python's `re` module for advanced pattern matching
 - `rich` library for beautiful terminal output
 - `markdown2` for HTML conversion
-- `pygments` for syntax highlights in code blocks
+- `pygments` for syntax highlights in code blocks based on the language
 - Custom ANSI escape code handling for precise styling
 
 The script includes comprehensive regular expressions to handle:
